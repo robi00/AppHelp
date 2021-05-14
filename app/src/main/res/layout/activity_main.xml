@@ -19,6 +19,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <Button
+            android:id="@+id/buttonSOS"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginBottom="646dp"
+            android:text="SOS"
+            android:textSize="24sp"
+            app:backgroundTint="#EB2020" />
+
+
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
