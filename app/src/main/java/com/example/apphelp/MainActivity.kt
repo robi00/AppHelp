@@ -2,6 +2,7 @@ package com.example.apphelp
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -54,8 +55,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        buttonSOS.setOnClickListener{
+        buttonLoc.setOnClickListener{
             getCurrentLocation()
+        }
+        buttonSOS.setOnClickListener {
+            val m_intent = Intent(this@MainActivity, Activity2::class.java)
+            startActivity(m_intent)
         }
 
         mapView = findViewById<MapView>(R.id.map1)
