@@ -1,78 +1,140 @@
 package com.example.apphelp
 
-import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.view.MenuItem
-import android.view.View
-import android.widget.*
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import kotlinx.android.synthetic.main.activity_2.*
-import kotlinx.android.synthetic.main.activity_main.*
-
-class Activity2 : AppCompatActivity(), AdapterView.OnItemClickListener {
-
-    private var list: ListView ?= null
-    var sel = intArrayOf(android.R.id.text1, android.R.id.text2)
-
-    fun read(){
-        var cursor: Cursor? = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
-        startManagingCursor(cursor)
-
-        var from =  arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone._ID)
-        var to = intArrayOf(android.R.id.text1, android.R.id.text2)
-        var simple : SimpleCursorAdapter = SimpleCursorAdapter(this, android.R.layout.simple_list_item_multiple_choice, cursor, from, to)
-        listView?.adapter = simple
+import androidx.core.content.ContextCompat
+import com.example.apphelp.databinding.Activity2Binding
 
 
-    }
+class Activity2 : AppCompatActivity() {
+    //view binding
+    lateinit var binding: Activity2Binding
+    //contact permission code
+    private val CONTACT_PERMISSION_CODE=1
+    //contact pick code
+    private val CONTACT_PICK_CODE = 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_2)
+        binding = Activity2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, Array(1){Manifest.permission.READ_CONTACTS}, 111)
-        }
-        else
-            read()
-
-
-        list = findViewById(R.id.listView)
-        list?.choiceMode = ListView.CHOICE_MODE_MULTIPLE
-        list?.onItemClickListener = this
-
-        buttonSave.setOnClickListener{
-            itemSelected()
-        }
-
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode==111 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
-            read()
-
-    }
-
-
-    override fun onItemClick(parent:AdapterView<*>?, view: View?, position:Int, id: Long){
-    }
-    fun itemSelected() {
-
-        val con: ArrayList<String> = ArrayList()
-        var itemSelected: String = "Selected contacts: "
-        for(i in sel) {
-            if(list?.isItemChecked(i) == true) {
-                con.add(list?.getItemAtPosition(i) as String)
-                itemSelected += list?.getItemAtPosition(i)
+        //handler click to pick contact
+        binding.addFab.setOnClickListener {
+            //check permission allowed or not
+            if(chechConstactPermission()) {
+                //allowed
+                pickContact()
+            }
+            else{
+                //not allowed, request
+                requestContactPermission()
             }
         }
-        for(i in con.indices){
-            println(con[i])
+    }
+
+    private fun chechConstactPermission(): Boolean{
+        //check if permission was granted/alloews or not, returns true if allowed, false if not
+        return ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
+    }
+    private fun requestContactPermission(){
+        //request READ_CONTACTS permission
+        val permission = arrayOf(android.Manifest.permission.READ_CONTACTS)
+        ActivityCompat.requestPermissions(this,permission, CONTACT_PERMISSION_CODE)
+    }
+    private fun pickContact(){
+        //intent to pick contact
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+        startActivityForResult(intent, CONTACT_PICK_CODE)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //handle permission request results. calls when user from Permission request dialog press allow or deny
+        if(requestCode == CONTACT_PERMISSION_CODE) {
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //permission granted, can pick contact
+            }
+            else {
+                //permission denied, can't pick contact
+                Toast.makeText(this,"Permission denied ", Toast.LENGTH_SHORT).show()
+            }
         }
-        Toast.makeText(applicationContext, itemSelected, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        var nameList: MutableList<String> = mutableListOf()
+        var idList: MutableList<String> = mutableListOf()
+        var numberList: MutableList<String> = mutableListOf()
+        //handle intent result. calls when user from intent (pickContact) picks on cancels pick contact
+        if(resultCode == RESULT_OK) {
+            //calls when user click a contact from contacts (intent) list
+            if(requestCode == CONTACT_PICK_CODE) {
+                binding.contactIv.text = ""
+
+                val cursor1: Cursor
+                val cursor2: Cursor?
+
+                //get data from intent
+                val uri = data!!.data
+                cursor1 = contentResolver.query(uri!!, null, null, null,null)!!
+                if(cursor1.moveToFirst()) {
+                    //get contacts details
+                    val contactId = cursor1.getString(cursor1.getColumnIndex(ContactsContract.Contacts._ID))
+                    val contactName = cursor1.getString(cursor1.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                    val contactThumbnail = cursor1.getString(cursor1.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI))
+                    val idResults = cursor1.getString(cursor1.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
+                    val idResultHold = idResults.toInt()
+
+                    idList.add(contactId)
+                    nameList.add(contactName)
+
+                    //set details
+                    binding.contactIv.append("ID: $contactId")
+                    binding.contactIv.append("\nName: $contactName")
+                    //set image, first check if uri/thumbnail is not null
+                    if(contactThumbnail != null){
+                        binding.thumbnailIv.setImageURI(Uri.parse(contactThumbnail))
+                    }
+                    else {
+                        binding.thumbnailIv.setImageResource(R.drawable.ic_person)
+                    }
+                    //check if contact has a phone number or not
+                    if(idResultHold == 1) {
+                        cursor2 = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null,
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+contactId,
+                            null,
+                            null)
+                        //a contact may have a multiple phone numbers
+                        while(cursor2!!.moveToNext()) {
+                            //get phone number
+                            val contactNumber = cursor2.getString(cursor2.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                            //set phone number
+                            binding.contactIv.append("\nPhone: $contactNumber")
+                            numberList.add(contactNumber)
+                        }
+                        cursor2.close()
+                    }
+                    cursor1.close()
+                }
+            }
+        }
+        else{
+            //cancelled picking contact
+            Toast.makeText(this,"Canclled",Toast.LENGTH_SHORT).show()
+        }
     }
 }
