@@ -3,6 +3,7 @@ package com.example.apphelp
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,9 @@ import com.example.apphelp.databinding.Activity2Binding
 
 
 class Activity2 : AppCompatActivity() {
+
+    lateinit var databaseHelper : DataBaseHelper
+
     //view binding
     lateinit var binding: Activity2Binding
     //contact permission code
@@ -23,6 +27,11 @@ class Activity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        databaseHelper = DataBaseHelper (this)
+        var sqLiteDataBase : SQLiteDatabase = databaseHelper.writableDatabase
+
+
         binding = Activity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -134,7 +143,7 @@ class Activity2 : AppCompatActivity() {
         }
         else{
             //cancelled picking contact
-            Toast.makeText(this,"Canclled",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Cancelled",Toast.LENGTH_SHORT).show()
         }
     }
 }
