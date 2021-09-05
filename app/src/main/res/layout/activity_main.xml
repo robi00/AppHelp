@@ -40,17 +40,46 @@
 
         <Button
             android:id="@+id/buttonLoc"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="80dp"
             android:text="Where am I?"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:backgroundTint="#FFFFFF"
-            app:layout_constraintStart_toStartOf="@+id/map1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/map1" />
+
+        <Button
+            android:id="@+id/buttonSett"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:text="Settings"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/buttSound"
+            app:layout_constraintEnd_toEndOf="@+id/map1"
+            app:layout_constraintTop_toTopOf="@+id/buttSound" />
+
+        <Button
+            android:id="@+id/buttSound"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Stop sound"
+            android:textColor="#000000"
+            android:textSize="10dp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonLoc"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSett"
+            app:layout_constraintStart_toEndOf="@+id/buttonLoc"
+            app:layout_constraintTop_toTopOf="@+id/buttonLoc" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
