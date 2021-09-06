@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonSOS"
+            android:layout_width="0dp"
+            android:layout_height="83dp"
+            android:text="SOS"
+            android:textSize="34sp"
+            app:backgroundTint="#F44336"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/map1" />
+
+        <Button
+            android:id="@+id/buttonLoc"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="80dp"
+            android:text="Where am I?"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/map1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSett"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:text="Settings"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/buttSound"
+            app:layout_constraintEnd_toEndOf="@+id/map1"
+            app:layout_constraintTop_toTopOf="@+id/buttSound" />
+
+        <Button
+            android:id="@+id/buttSound"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:text="Stop sound"
+            android:textColor="#000000"
+            android:textSize="10dp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonLoc"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSett"
+            app:layout_constraintStart_toEndOf="@+id/buttonLoc"
+            app:layout_constraintTop_toTopOf="@+id/buttonLoc" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
