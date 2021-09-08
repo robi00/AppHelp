@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppHelp</string>
+    <string name="stop_sound">Detener el sonido</string>
+    <string name="settings">" Ajustes"</string>
+    <string name="where_am_i">" ¿Dónde estoy?"</string>
+    <string name="add">AGREGAR</string>
+    <string name="info">"Presione 'AGREGAR' para agregar un contacto entre los de emergencia, o presione el contacto que desea eliminar "</string>
+</resources>

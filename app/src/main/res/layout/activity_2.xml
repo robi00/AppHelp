@@ -37,7 +37,7 @@
         android:layout_height="100dp"
         android:layout_below="@+id/info"
         android:layout_marginTop="5dp"
-        android:text="ADD"
+        android:text="@string/add"
         android:textSize="34dp"
         app:backgroundTint="#F44336" />
 
@@ -47,6 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/contactIv"
         android:layout_marginTop="5dp"
-        android:text="Press on 'ADD' to add a contact among the emergency ones or press on the contact you want to delete" />
+        android:text="@string/info" />
 
 </RelativeLayout>

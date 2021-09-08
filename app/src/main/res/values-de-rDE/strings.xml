@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppHelp</string>
+    <string name="info">" Drücken Sie auf 'HINZUFÜGEN', um einen Kontakt zu den Notfallkontakten hinzuzufügen, oder drücken Sie auf den Kontakt, den Sie löschen möchten"</string>
+    <string name="add">" HINZUFÜGEN"</string>
+    <string name="where_am_i">" Wo bin ich?"</string>
+    <string name="settings">Einstellungen</string>
+    <string name="stop_sound">Ton stoppen</string>
+</resources>

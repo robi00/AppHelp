@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppHelp</string>
+    <string name="info">" Нажмите «ДОБАВИТЬ», чтобы добавить контакт из числа аварийных, или нажмите контакт, который хотите удалить."</string>
+    <string name="add">" ДОБАВИТЬ"</string>
+    <string name="where_am_i">" Где я?"</string>
+    <string name="settings">Настройки</string>
+    <string name="stop_sound">Остановить звук</string>
+</resources>

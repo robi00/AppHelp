@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppHelp</string>
+    <string name="stop_sound">" 音を止めて"</string>
+    <string name="settings">"設定 "</string>
+    <string name="where_am_i">ここはどこ？</string>
+    <string name="add">" 追加"</string>
+    <string name="info">" 「追加」を押して緊急連絡先の間に連絡先を追加するか、削除する連絡先を押します"</string>
+</resources>

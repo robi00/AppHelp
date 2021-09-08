@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppHelp</string>
+    <string name="stop_sound">Arrêter le son</string>
+    <string name="settings">" Les paramètres"</string>
+    <string name="where_am_i">Où suis-je?</string>
+    <string name="add">AJOUTER</string>
+    <string name="info">Appuyez sur « AJOUTER » pour ajouter un contact parmi les contacts d\'urgence, ou appuyez sur le contact que vous souhaitez supprimer</string>
+</resources>
