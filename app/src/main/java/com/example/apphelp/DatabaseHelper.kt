@@ -36,7 +36,7 @@ class DatabaseHelper(var context: Context): SQLiteOpenHelper (context, TABLE_NAM
         Log.d(TAG, "addData: Adding $item and $phone to $TABLE_NAME")
         var result = db.insert(TABLE_NAME,null,contentValues)
 
-        //if data as inserited incorrectly it will return -1
+        //if data as inserted incorrectly it will return -1
         if (result == (-1).toLong()) {
             return false
         } else {
