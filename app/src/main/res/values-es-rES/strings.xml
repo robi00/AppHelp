@@ -6,4 +6,5 @@
     <string name="where_am_i">" ¿Dónde estoy?"</string>
     <string name="add">AGREGAR</string>
     <string name="info">"Presione 'AGREGAR' para agregar un contacto entre los de emergencia, o presione el contacto que desea eliminar "</string>
+    <string name="add2">ADD</string>
 </resources>

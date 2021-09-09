@@ -6,4 +6,9 @@
     <string name="where_am_i">Où suis-je?</string>
     <string name="add">AJOUTER</string>
     <string name="info">Appuyez sur « AJOUTER » pour ajouter un contact parmi les contacts d\'urgence, ou appuyez sur le contact que vous souhaitez supprimer</string>
+    <string name="add2">AJOUTER</string>
+    <string name="info2">Appuyez sur « AJOUTER » pour ajouter un contact parmi les contacts d\'urgence, ou appuyez sur le contact que vous souhaitez supprimer</string>
+    <string name="where_am_i2">Où suis-je</string>
+    <string name="settings2">" Les paramètres"</string>
+    <string name="stop_sound2">Arrêter le son</string>
 </resources>

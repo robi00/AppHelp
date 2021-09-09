@@ -4,6 +4,11 @@
     <string name="stop_sound">Ferma suono</string>
     <string name="settings">Impostazioni</string>
     <string name="where_am_i">Dove sono?</string>
-    <string name="add">Aggiungi</string>
+    <string name="add">AGGIUNGI</string>
     <string name="info">Premere \'AGGIUNGI\' per inserire un contatto in quelli di emergenza, oppure premere sul contatto che si vuole eliminare</string>
+    <string name="add2">AGGIUNGI</string>
+    <string name="info2">Premere \'AGGIUNGI\' per inserire un contatto in quelli di emergenza, oppure premere sul contatto che si vuole eliminare</string>
+    <string name="where_am_i2">Dove sono?</string>
+    <string name="settings2">Impostazioni</string>
+    <string name="stop_sound2">Ferma suono</string>
 </resources>

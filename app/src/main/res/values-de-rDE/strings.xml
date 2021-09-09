@@ -6,4 +6,9 @@
     <string name="where_am_i">" Wo bin ich?"</string>
     <string name="settings">Einstellungen</string>
     <string name="stop_sound">Ton stoppen</string>
+    <string name="add2">" HINZUFÜGEN"</string>
+    <string name="info2">" Drücken Sie auf 'HINZUFÜGEN', um einen Kontakt zu den Notfallkontakten hinzuzufügen, oder drücken Sie auf den Kontakt, den Sie löschen möchten"</string>
+    <string name="where_am_i2">" Wo bin ich"</string>
+    <string name="settings2">Einstellungen</string>
+    <string name="stop_sound2">Ton stoppen</string>
 </resources>

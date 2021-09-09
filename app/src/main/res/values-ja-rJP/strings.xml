@@ -6,4 +6,9 @@
     <string name="where_am_i">ここはどこ？</string>
     <string name="add">" 追加"</string>
     <string name="info">" 「追加」を押して緊急連絡先の間に連絡先を追加するか、削除する連絡先を押します"</string>
+    <string name="add2">" 追加"</string>
+    <string name="info2">" 「追加」を押して緊急連絡先の間に連絡先を追加するか、削除する連絡先を押します"</string>
+    <string name="where_am_i2">ここはどこ？</string>
+    <string name="settings2">"設定 "</string>
+    <string name="stop_sound2">" 音を止めて"</string>
 </resources>

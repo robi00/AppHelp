@@ -6,4 +6,5 @@
     <string name="where_am_i">" Где я?"</string>
     <string name="settings">Настройки</string>
     <string name="stop_sound">Остановить звук</string>
+    <string name="add2">ADD</string>
 </resources>
