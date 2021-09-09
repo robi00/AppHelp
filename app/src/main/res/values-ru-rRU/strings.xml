@@ -7,4 +7,8 @@
     <string name="settings">Настройки</string>
     <string name="stop_sound">Остановить звук</string>
     <string name="add2">ADD</string>
+    <string name="info2">" Нажмите «ДОБАВИТЬ», чтобы добавить контакт из числа аварийных, или нажмите контакт, который хотите удалить."</string>
+    <string name="where_am_i2">" Где я?"</string>
+    <string name="settings2">Настройки</string>
+    <string name="stop_sound2">Остановить звук</string>
 </resources>
